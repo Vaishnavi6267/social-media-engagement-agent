@@ -18,7 +18,7 @@ except ImportError:
 logger = logging.getLogger("gemini_agent")
 logger.setLevel(logging.INFO)
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY", "")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY", "AQ.Ab8RN6IShE6xnbuAz6qGPCYwY2RXMofaAKxnhsSPTurqO-FM3w")
 DEFAULT_GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 
 
