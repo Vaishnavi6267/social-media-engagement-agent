@@ -21,9 +21,10 @@ app = FastAPI(
 hindsight_service = HindsightMemoryService()
 agent = SocialMediaEngagementAgent(hindsight_service=hindsight_service)
 
-# Load sample posts
-SAMPLE_POSTS_PATH = os.path.join(os.path.dirname(__file__), "sample_posts.json")
-DATA_SAMPLE_POSTS_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "sample_posts.json")
+# Load sample posts safely (supporting file execution as well as interactive Colab notebooks)
+BASE_DIR = os.path.dirname(__file__) if "__file__" in globals() else os.getcwd()
+SAMPLE_POSTS_PATH = os.path.join(BASE_DIR, "sample_posts.json")
+DATA_SAMPLE_POSTS_PATH = os.path.join(BASE_DIR, "..", "data", "sample_posts.json")
 
 def load_posts() -> List[Dict[str, Any]]:
     target_path = SAMPLE_POSTS_PATH if os.path.exists(SAMPLE_POSTS_PATH) else DATA_SAMPLE_POSTS_PATH

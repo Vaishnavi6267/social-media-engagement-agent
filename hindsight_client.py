@@ -26,10 +26,13 @@ class HindsightMemoryService:
         self._load_seed_data()
 
     def _load_seed_data(self):
-        seed_path = os.path.join(os.path.dirname(__file__), "..", "data", "seed_memories.json")
-        if os.path.exists(seed_path):
+        base_dir = os.path.dirname(__file__) if "__file__" in globals() else os.getcwd()
+        seed_path_local = os.path.join(base_dir, "seed_memories.json")
+        seed_path_data = os.path.join(base_dir, "..", "data", "seed_memories.json")
+        target_path = seed_path_local if os.path.exists(seed_path_local) else seed_path_data
+        if os.path.exists(target_path):
             try:
-                with open(seed_path, "r", encoding="utf-8") as f:
+                with open(target_path, "r", encoding="utf-8") as f:
                     self.mock_memories = json.load(f)
             except Exception as e:
                 logger.error(f"Error loading seed memories: {e}")
