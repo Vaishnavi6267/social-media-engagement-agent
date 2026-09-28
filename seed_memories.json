@@ -1,0 +1,32 @@
+[
+  {
+    "type": "directive",
+    "content": "Brand Voice Rule: Always maintain a helpful, empathetic, human tone. Never use snark, flippant humor, or dismissive language during complaints.",
+    "category": "brand_rule"
+  },
+  {
+    "type": "directive",
+    "content": "Brand Voice Rule: Flag safety, legal disputes, discrimination, or breaking news events directly to human supervisors without auto-generating public replies.",
+    "category": "brand_rule"
+  },
+  {
+    "type": "observation",
+    "content": "In Spring Product Launch 2025, a sizing chart mistake caused customer confusion on Instagram. Posting a corrected size guide graphic alongside a free exchange offer resolved 95% of customer complaints positively.",
+    "category": "campaign_history"
+  },
+  {
+    "type": "observation",
+    "content": "During the 2025 sizing chart issue, one humorous reply by a former community manager received severe public backlash on X/Twitter. Humorous replies to product defects or delays must be strictly avoided.",
+    "category": "past_mistakes"
+  },
+  {
+    "type": "experience",
+    "content": "User @alice_style complained about a late delivery in March 2025. She received a refund and personal apology via DM, which she appreciated and responded to positively.",
+    "category": "user_history"
+  },
+  {
+    "type": "observation",
+    "content": "Standard shipping SLA is 3-5 business days. Express shipping is 1-2 days. Free exchanges are valid within 30 days of purchase.",
+    "category": "knowledge_base"
+  }
+]

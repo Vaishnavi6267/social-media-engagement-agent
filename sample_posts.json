@@ -1,0 +1,46 @@
+[
+  {
+    "id": "post_001",
+    "platform": "Instagram",
+    "author": "@fashion_influencer_22",
+    "timestamp": "2026-03-31T14:20:00Z",
+    "post_type": "comment",
+    "content": "Hey! The new product line sizing chart on your site is completely wrong. Order #8821 arrived and medium is way too small. Is anyone checking this?",
+    "sentiment": "negative",
+    "category": "product_issue",
+    "scenario": "sizing_complaint_2026"
+  },
+  {
+    "id": "post_002",
+    "platform": "X (Twitter)",
+    "author": "@alice_style",
+    "timestamp": "2026-03-31T15:05:00Z",
+    "post_type": "mention",
+    "content": "Ordered 8 days ago, still not delivered, and nobody has replied to my email. Order #7712.",
+    "sentiment": "negative",
+    "category": "delivery_delay",
+    "scenario": "returning_customer_delay"
+  },
+  {
+    "id": "post_003",
+    "platform": "LinkedIn",
+    "author": "@tech_lead_sarah",
+    "timestamp": "2026-03-31T11:00:00Z",
+    "post_type": "comment",
+    "content": "Great announcement on the v2 release! Does this include bulk export for enterprise plans, and what's the pricing update?",
+    "sentiment": "positive",
+    "category": "purchase_inquiry",
+    "scenario": "feature_pricing"
+  },
+  {
+    "id": "post_004",
+    "platform": "Instagram",
+    "author": "@urban_runner",
+    "timestamp": "2026-03-31T16:00:00Z",
+    "post_type": "comment",
+    "content": "Love the blue jacket! Does it come in midnight navy or black as well?",
+    "sentiment": "positive",
+    "category": "product_inquiry",
+    "scenario": "color_availability"
+  }
+]
