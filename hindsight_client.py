@@ -8,7 +8,7 @@ logger = logging.getLogger("hindsight_service")
 logger.setLevel(logging.INFO)
 
 HINDSIGHT_API_URL = os.getenv("HINDSIGHT_API_URL", "https://api.hindsight.vectorize.io")
-HINDSIGHT_API_KEY = os.getenv("HINDSIGHT_API_KEY", "")
+HINDSIGHT_API_KEY = os.getenv("HINDSIGHT_API_KEY", "hsk_87cbcfd3ce9291014acd58e023571805_a74472fc710b0bb5")
 BANK_ID = os.getenv("HINDSIGHT_BANK_ID", "social-media-engagement-agent")
 
 class HindsightMemoryService:
