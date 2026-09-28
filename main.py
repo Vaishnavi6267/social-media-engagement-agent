@@ -4,12 +4,16 @@ from typing import List, Dict, Any, Optional
 from fastapi import FastAPI, HTTPException, Query
 from pydantic import BaseModel, Field
 
-from backend.hindsight_client import HindsightMemoryService
-from backend.claude_agent import SocialMediaEngagementAgent
+try:
+    from backend.hindsight_client import HindsightMemoryService
+    from backend.gemini_agent import SocialMediaEngagementAgent
+except ImportError:
+    from hindsight_client import HindsightMemoryService
+    from gemini_agent import SocialMediaEngagementAgent
 
 app = FastAPI(
     title="Social Media Engagement Agent powered by Hindsight Memory",
-    description="API for multi-platform social media monitoring, Hindsight memory recall/reflection, and Claude response drafting.",
+    description="API for multi-platform social media monitoring, Hindsight memory recall/reflection, and Gemini response drafting.",
     version="1.0.0"
 )
 
@@ -18,11 +22,13 @@ hindsight_service = HindsightMemoryService()
 agent = SocialMediaEngagementAgent(hindsight_service=hindsight_service)
 
 # Load sample posts
-SAMPLE_POSTS_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "sample_posts.json")
+SAMPLE_POSTS_PATH = os.path.join(os.path.dirname(__file__), "sample_posts.json")
+DATA_SAMPLE_POSTS_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "sample_posts.json")
 
 def load_posts() -> List[Dict[str, Any]]:
-    if os.path.exists(SAMPLE_POSTS_PATH):
-        with open(SAMPLE_POSTS_PATH, "r", encoding="utf-8") as f:
+    target_path = SAMPLE_POSTS_PATH if os.path.exists(SAMPLE_POSTS_PATH) else DATA_SAMPLE_POSTS_PATH
+    if os.path.exists(target_path):
+        with open(target_path, "r", encoding="utf-8") as f:
             return json.load(f)
     return []
 
@@ -48,7 +54,7 @@ def read_root():
         "status": "online",
         "app": "Social Media Engagement Agent",
         "hindsight_memory": "active",
-        "claude_model": "claude-3-5-sonnet",
+        "gemini_model": os.getenv("GEMINI_MODEL", "gemini-2.5-flash"),
         "docs_url": "/docs"
     }
 
@@ -59,7 +65,7 @@ def get_posts():
 
 @app.post("/api/draft")
 async def generate_draft(req: DraftRequest):
-    """Generate a response draft for a post using Anthropic Claude + Hindsight Memory."""
+    """Generate a response draft for a post using Google Gemini + Hindsight Memory."""
     post_dict = req.post.model_dump()
     result = await agent.generate_draft_response(post_dict, include_hindsight=req.include_hindsight)
     return result

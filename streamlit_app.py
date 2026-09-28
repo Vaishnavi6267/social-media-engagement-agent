@@ -7,7 +7,10 @@ import sys
 # Ensure backend imports work
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from backend.main import load_posts, hindsight_service, agent
+try:
+    from backend.main import load_posts, hindsight_service, agent
+except ImportError:
+    from main import load_posts, hindsight_service, agent
 
 st.set_page_config(
     page_title="Social Media Engagement Agent | Hindsight Memory",
@@ -17,13 +20,13 @@ st.set_page_config(
 
 # Title & Header
 st.title("🧠 Social Media Engagement Agent")
-st.caption("Powered by Hindsight Agent Memory & Anthropic Claude | Continuous Memory Across Conversations & Campaigns")
+st.caption("Powered by Hindsight Agent Memory & Google Gemini | Continuous Memory Across Conversations & Campaigns")
 
 # Sidebar - System Status
 with st.sidebar:
     st.header("⚙️ Agent Status")
     st.success("🟢 Hindsight Bank Active")
-    st.info("🤖 Claude 3.5 Sonnet Connected")
+    st.info("🤖 Google Gemini Connected")
     
     st.divider()
     st.markdown("### 📊 Memory Statistics")
@@ -71,7 +74,7 @@ with tab1:
         st.subheader("🤖 Agent Draft & Reasoning")
         if generate_btn or "draft_result" in st.session_state:
             if generate_btn:
-                with st.spinner("Reflecting over Hindsight Memory Bank & calling Claude..."):
+                with st.spinner("Reflecting over Hindsight Memory Bank & calling Gemini..."):
                     draft_res = asyncio.run(agent.generate_draft_response(selected_post, include_hindsight=True))
                     st.session_state["draft_result"] = draft_res
             else:

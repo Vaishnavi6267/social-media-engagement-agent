@@ -7,12 +7,12 @@ Audience insights and recommendations
 Python-based backend
 Technologies Used
 Python
-Claude AI
+Google Gemini AI
 Gradio / Streamlit
 Project Structure
 backend/
   main.py
-  claude_agent.py
+  gemini_agent.py
   hindsight_client.py
 frontend/
   gradio_app.py

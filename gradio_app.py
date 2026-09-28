@@ -6,7 +6,10 @@ import sys
 # Ensure backend imports work
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from backend.main import load_posts, hindsight_service, agent
+try:
+    from backend.main import load_posts, hindsight_service, agent
+except ImportError:
+    from main import load_posts, hindsight_service, agent
 
 def respond_to_post(platform, author, content, use_hindsight):
     post = {
